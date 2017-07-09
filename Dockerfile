@@ -26,8 +26,7 @@ RUN sed -i 's/user\s*nginx;/user www-data;/' /etc/nginx/nginx.conf \
 COPY php-fpm-movim.conf /etc/php/7.0/fpm/pool.d/php-fpm-movim.conf
 COPY default.conf /etc/nginx/conf.d/default.conf
 COPY nginx.conf /etc/nginx/nginx.conf
-COPY configure-script /configure-script
+COPY start.sh /bin/start.sh
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD supervisord -c /etc/supervisor/conf.d/supervisord.conf
-
+ENTRYPOINT ["/bin/start.sh"]

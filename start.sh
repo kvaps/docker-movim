@@ -40,3 +40,6 @@ sed -i '/proxy_pass/ s|proxy_pass.*|proxy_pass http://localhost:'${MOVIM_PORT}'/
 chown -R www-data:www-data /var/www/html/cache
 chown -R www-data:www-data /var/www/html/log
 chown -R www-data:www-data /var/www/html/users
+
+# start daemons
+supervisord -c /etc/supervisor/conf.d/supervisord.conf
