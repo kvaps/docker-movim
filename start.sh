@@ -32,7 +32,7 @@ if [[ -z "$MOVIM_PORT" ]]; then
     export MOVIM_PORT=8080
 fi
 
-#php /var/www/html/mud.php db --set
+php /var/www/html/mud.php db --set
 sed -i "s/\(pid\s*=\s*\)\(.*\)/\1\/var\/run\/php-fpm7.0.pid/g" /etc/php/7.0/fpm/php-fpm.conf
 sed -i '/proxy_pass/ s|proxy_pass.*|proxy_pass http://localhost:'${MOVIM_PORT}'/|g' /etc/nginx/conf.d/default.conf
 
